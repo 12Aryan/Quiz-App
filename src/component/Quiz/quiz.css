@@ -1,0 +1,101 @@
+.Number-of-question-container {
+  border: 1px solid var(--primary-dark-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  align-items: center;
+}
+.outline-active {
+  align-items: center;
+  border: 2px solid var(--primary-dark-color);
+  border-radius: 50%;
+  width: 35px;
+  display: flex;
+  height: 35px;
+  justify-content: center;
+}
+.question-circle-active {
+  border-radius: 50%;
+  border: none !important;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  /* background-color: #666666; */
+  background-color: var(--primary-color);
+  padding: 3px;
+  cursor: pointer;
+}
+.question-circle {
+  border-radius: 50%;
+  border: none !important;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #666666;
+  /* background-color: var(--primary-color); */
+  padding: 3px;
+  cursor: pointer;
+}
+.question-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem;
+}
+.total-questions,
+.answered-questions,
+.unanswered-questions {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+.question-header {
+  padding: 1rem 0;
+}
+.options {
+  gap: 1rem;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+.single-option {
+  padding: 1rem 2rem;
+  min-width: 35rem;
+  border: 1px solid var(--primary-color);
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.selected {
+  background: var(--primary-color);
+  color: white;
+}
+.prev-button,
+.next-button,
+.final-button {
+  padding: 1rem 2rem;
+  border: none;
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 16px;
+  cursor: pointer;
+}
+.disabled {
+  padding: 1rem 2rem;
+  border: none;
+  background: #666666;
+  color: var(--white-color);
+  border-radius: 16px;
+  cursor: pointer;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
