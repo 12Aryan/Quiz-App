@@ -4,29 +4,30 @@ import "../Quiz/quiz.css";
 
 const Quiz = () => {
   console.log("-->>", QuizData);
-  const length = QuizData.length;
+  const totalQuestion = QuizData.length;
   const [questionNumber, setQuestionNumber] = useState(1);
   const [selectOption, setSelectedOption] = useState(null);
   const [answered, setAnswered] = useState(0);
+
   const handleClick = (e) => {
     console.log(e.target.id);
     const clicked = Number(e.target.id);
     console.log("clicked", clicked);
     setQuestionNumber(clicked);
-    setSelectedOption(null);  
+    setSelectedOption(null);
   };
   const clickToPrevious = () => {
     questionNumber === 1
       ? setQuestionNumber(1)
       : setQuestionNumber(questionNumber - 1);
-      setSelectedOption(null);  
+    setSelectedOption(null);
   };
   const clickToNext = () => {
-    console.log("len", length);
-    questionNumber === length
-      ? setQuestionNumber(length)
+    console.log("len", totalQuestion);
+    questionNumber === totalQuestion
+      ? setQuestionNumber(totalQuestion)
       : setQuestionNumber(questionNumber + 1);
-      setSelectedOption(null);
+    setSelectedOption(null);
   };
 
   const clickToSelect = (e) => {
@@ -36,8 +37,11 @@ const Quiz = () => {
     QuizData.map((e, i) => {});
   };
   const clickToSubmit = () => {
-    setAnswered(answered + 1);
-    setSelectedOption(null);
+    console.log("submitted");
+    if (selectOption != null) {
+      setAnswered(answered + 1);
+      setSelectedOption(null);
+    }
   };
   console.log("question number", questionNumber);
   console.log("answered", answered);
@@ -72,11 +76,11 @@ const Quiz = () => {
       <div className="body">
         <div className="question-count">
           <div className="total-questions">
-            <span>Total Questions: {length}</span>
+            <span>Total Questions: {totalQuestion}</span>
           </div>
           <div className="answered-questions">Answered: {answered}</div>
           <div className="unanswered-questions">
-            Unanswered: {length - answered}
+            Unanswered: {totalQuestion - answered}
           </div>
         </div>
         <div className="question-detail-container">
@@ -96,7 +100,6 @@ const Quiz = () => {
                       {element.options.map((ele, index) => {
                         return (
                           <div
-                            // className="single-option"
                             className={`single-option ${
                               index + 1 === selectOption ? "selected" : ""
                             }`}
@@ -129,13 +132,15 @@ const Quiz = () => {
           Previous
         </button>
         <button
-          className={questionNumber === length ? "disabled" : "next-button"}
+          className={
+            questionNumber === totalQuestion ? "disabled" : "next-button"
+          }
           onClick={() => clickToNext()}
-          disabled={questionNumber === length ? true : false}
+          disabled={questionNumber === totalQuestion ? true : false}
         >
           Next
         </button>
-        <button className="final-button" onClick={() => clickToSubmit()}>
+        <button className="final-button" disabled={selectOption == null ? true : false} onClick={() => clickToSubmit()}>
           Submit
         </button>
       </div>
