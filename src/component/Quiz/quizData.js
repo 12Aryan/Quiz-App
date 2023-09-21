@@ -4,72 +4,102 @@
       question: "First question?",
       options: ["Paris", "London", "Berlin", "Madrid"],
       correct: "Paris",
-      correctAnswer: 1
+      correctAnswer: 1,
+      isVisited: false,
+      isActive: true,
+      isAnswered: false,
     },
     {
       id: 2,
       question: "second question??",
       options: ["Earth", "Mars", "Venus", "Jupiter"],
       correct: "Mars",
-      correctAnswer: 3
+      correctAnswer: 3,
+      isVisited: false,
+      isActive: false,
+      isAnswered: false,
     },
     {
         id: 3,
         question: "third question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 2
+        correctAnswer: 2,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 4,
         question: "fourth question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 1
+        correctAnswer: 1,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 5,
         question: "fifth question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 4
+        correctAnswer: 4,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 6,
         question: "sixth question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 3
+        correctAnswer: 3,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 7,
         question: "7 question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 1
+        correctAnswer: 1,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 8,
         question: "8 question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 2
+        correctAnswer: 2,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 9,
         question: "9 question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 2
+        correctAnswer: 2,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
       {
         id: 10,
         question: "10 question??",
         options: ["Earth", "Mars", "Venus", "Jupiter"],
         correct: "Mars",
-        correctAnswer: 4
+        correctAnswer: 4,
+        isVisited: false,
+        isActive: false,
+        isAnswered: false,
       },
 
   
   ];
-  export default QuizData
+  export default QuizData;

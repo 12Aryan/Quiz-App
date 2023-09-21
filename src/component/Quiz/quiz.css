@@ -44,7 +44,7 @@
 .question-count {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 2rem;
+  padding: 2rem 0;
 }
 .total-questions,
 .answered-questions,
@@ -78,7 +78,7 @@
 }
 .prev-button,
 .next-button,
-.final-button {
+.submit-button {
   padding: 1rem 2rem;
   border: none;
   background: var(--primary-color);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QuizData from "../Quiz/quizData.js";
 import "../Quiz/quiz.css";
 
@@ -6,45 +6,69 @@ const Quiz = () => {
   console.log("-->>", QuizData);
   const totalQuestion = QuizData.length;
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [selectOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
   const [answered, setAnswered] = useState(0);
+  const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [answerStatus, setAnswerStatus] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleClick = (e) => {
-    console.log(e.target.id);
+
+  const handleClick = (e, currentCorrectAnswer) => {
+    console.log("currentCorrectAnswer", currentCorrectAnswer);
     const clicked = Number(e.target.id);
-    console.log("clicked", clicked);
     setQuestionNumber(clicked);
+    // setCorrectAnswer(currentCorrectAnswer);
+    setIsSubmitted(false)
     setSelectedOption(null);
   };
   const clickToPrevious = () => {
     questionNumber === 1
       ? setQuestionNumber(1)
       : setQuestionNumber(questionNumber - 1);
+      setIsSubmitted(false)
     setSelectedOption(null);
   };
   const clickToNext = () => {
-    console.log("len", totalQuestion);
     questionNumber === totalQuestion
       ? setQuestionNumber(totalQuestion)
       : setQuestionNumber(questionNumber + 1);
+      setIsSubmitted(false)
     setSelectedOption(null);
   };
 
-  const clickToSelect = (e) => {
-    console.log(e.target.id);
+  const clickToSelect = (e, currentCorrectAnswer) => {
+    console.log('currentCorrectAnswer', currentCorrectAnswer)
     const value = Number(e.target.id) + 1;
     setSelectedOption(value);
-    QuizData.map((e, i) => {});
+    setCorrectAnswer(currentCorrectAnswer);
+    // QuizData.map((e, i) => {});
   };
   const clickToSubmit = () => {
-    console.log("submitted");
-    if (selectOption != null) {
+    console.log("selectedOption-->>", selectedOption);
+    if (selectedOption != null) {
+      setIsSubmitted(true)
+      selectedOption === correctAnswer
+        ? setAnswerStatus(true)
+        : setAnswerStatus(false);
+
       setAnswered(answered + 1);
-      setSelectedOption(null);
+      // setSelectedOption(null);
+
+      // setQuestionNumber(questionNumber + 1);
     }
   };
   console.log("question number", questionNumber);
   console.log("answered", answered);
+  console.log("selectedOption", selectedOption);
+  console.log("correctAnswer", correctAnswer);
+  console.log("answerStatus", answerStatus);
+  console.log("isSubmited", isSubmitted);
+  
+  useEffect(() => {
+    // handleClick(1, 3)
+    // setIsSubmitted(false)
+  });
+
   return (
     <>
       <div className="header">
@@ -64,7 +88,7 @@ const Quiz = () => {
                       ? "question-circle-active"
                       : "question-circle"
                   }
-                  onClick={(e) => handleClick(e)}
+                  onClick={(e) => handleClick(e, question.correctAnswer)}
                 >
                   {question.id}
                 </div>
@@ -101,11 +125,11 @@ const Quiz = () => {
                         return (
                           <div
                             className={`single-option ${
-                              index + 1 === selectOption ? "selected" : ""
+                              index + 1 === selectedOption ? "selected" : ""
                             }`}
                             key={index}
                             id={index}
-                            onClick={(e) => clickToSelect(e)}
+                            onClick={(e) => clickToSelect(e, element.correctAnswer)}
                           >
                             {ele}
                           </div>
@@ -118,10 +142,13 @@ const Quiz = () => {
             );
           })}
         </div>
-        {/* <div className="answer-container">
-          <h4>Your Answer is Correct</h4>
-          <h4>Wrong Answer</h4>
-        </div> */}
+        <div className="answer-container">
+          {answerStatus && isSubmitted ? (
+            <h4>Your Answer is Correct</h4>
+          ) : (
+            <h4></h4>
+          )}
+        </div>
       </div>
       <div className="footer">
         <button
@@ -140,7 +167,11 @@ const Quiz = () => {
         >
           Next
         </button>
-        <button className="final-button" disabled={selectOption == null ? true : false} onClick={() => clickToSubmit()}>
+        <button
+          className={selectedOption == null ? "disabled" : "submit-button"}
+          disabled={selectedOption == null ? true : false}
+          onClick={() => clickToSubmit()}
+        >
           Submit
         </button>
       </div>
